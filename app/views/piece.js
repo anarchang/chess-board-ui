@@ -5,10 +5,6 @@ const View = require('ampersand-view')
 module.exports = View.extend({
   template:  require('../templates/piece.html'),
 
-  props: {
-    board: 'state' // Board
-  },
-
   derived: {
     css_style: {
       deps: ['model.top', 'model.left'],
