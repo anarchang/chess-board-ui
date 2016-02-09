@@ -1,0 +1,11 @@
+[ignore]
+.*/node_modules/gulp-flowtype/*
+
+[include]
+
+[libs]
+declarations/templateHtmlStub.d.js
+
+[options]
+module.system=haste
+module.name_mapper='.*\.html$' -> 'TemplateHtmlStub'
