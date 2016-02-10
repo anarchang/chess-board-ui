@@ -28,5 +28,7 @@ module.exports = View.extend({
   drop (e) {
     this.model.top = e.clientY - 60
     this.model.left = e.clientX
+
+    this.model.save()
   }
 })

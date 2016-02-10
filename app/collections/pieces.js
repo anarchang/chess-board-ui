@@ -1,9 +1,12 @@
 /* @flow */
 
-const Collection = require('ampersand-collection')
+const Collection = require('ampersand-rest-collection')
 
 const View = require('../models/piece')
 
 module.exports = Collection.extend({
-  model: View
+  model: View,
+  mainIndex: 'id',
+
+  url: '/piece'
 })

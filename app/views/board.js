@@ -13,8 +13,9 @@ module.exports = View.extend({
     piece: {
       hook: 'pieces',
       prepareView (el) {
-        let piece = new Piece({top: 11.5, left: 20, piece_id: 'white_queen'})
-        let pieceCollection = new PieceCollection(piece)
+        let pieceCollection = new PieceCollection()
+        pieceCollection.fetch()
+
         return this.renderCollection(pieceCollection, PieceView, el)
       }
     }
