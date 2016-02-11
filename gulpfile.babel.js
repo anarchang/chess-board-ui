@@ -14,7 +14,6 @@ import gutil from 'gulp-util'
 import combiner from 'stream-combiner2'
 import watchify from 'watchify'
 import partialify from 'partialify'
-import flowtype from 'gulp-flowtype'
 
 const dirs = {
   src: 'app',

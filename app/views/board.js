@@ -9,14 +9,36 @@ const PieceCollection = require('../collections/pieces')
 module.exports = View.extend({
   template:  require('../templates/board.html'),
 
+  props: {
+    conn: 'any' // Websocket
+  },
+
+  collections: {
+    pieceCollection: PieceCollection
+  },
+
+  initialize () {
+    let pieces = this.pieceCollection
+    this.conn = new WebSocket("ws://localhost:3000/ws")
+    this.conn.onmessage = function(evt) {
+      console.log(`Received websocket message: ${evt.data}`)
+      let updatedPieceId = evt.data
+      console.log(`updatedPieceId: ${updatedPieceId}`)
+      let pieceModel = pieces.get(updatedPieceId)
+      if (pieceModel) {
+        console.log(`update piece`)
+        pieceModel.fetch()
+      }
+    }
+  },
+
   subviews: {
     piece: {
       hook: 'pieces',
       prepareView (el) {
-        let pieceCollection = new PieceCollection()
-        pieceCollection.fetch()
+        this.pieceCollection.fetch()
 
-        return this.renderCollection(pieceCollection, PieceView, el)
+        return this.renderCollection(this.pieceCollection, PieceView, el)
       }
     }
   }

@@ -2,8 +2,26 @@
 
 const View = require('ampersand-view')
 
+const piece_templates = [
+    require('../templates/WhiteQueen.html'),
+    // BlackQueen
+    // WhiteKing
+    // BlackKing
+    // WhiteRook
+    // BlackRook
+    // WhiteBishop
+    // BlackBishop
+    // WhiteKnight
+    // BlackNight
+    // WhitePawn
+    // BlackPawn
+  ]
+
 module.exports = View.extend({
-  template:  require('../templates/piece.html'),
+  template () {
+    console.log(`piece view model piece_type ${this.model.pieceType}`)
+    return piece_templates[this.model.pieceType]
+  },
 
   derived: {
     css_style: {
