@@ -7,6 +7,6 @@ module.exports = Model.extend({
     id: 'number',
     top: 'number',
     left: 'number',
-    pieceType: 'int'
+    pieceType: 'number'
   }
 })
